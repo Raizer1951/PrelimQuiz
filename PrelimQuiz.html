@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise</title>
+</head>
+<style>
+    body{
+            background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/06/Technology-HD-Wallpaper.jpg');
+        }
+</style>
+
+    <header>
+        <h1>Exercise</h1>
+    </header>
+
+
+    <section id="forms-related">
+        <h3>Create the necessary html elements that best fit for the following scenario. 3pts each, observe proper naming convention</h3>
+        <ol>
+            <li>Delivery date filter for an application, that cannot select previous date past today's date.</li>
+            <!--ANWER HERE-->
+            <form>
+                <label for="deliveryDate">Select Delivery Date:</label>
+                <input type="date" id="deliveryDate" name="deliveryDate" min="" required>
+                <button type="submit">Submit</button>
+            </form>
+            <script>
+                // Get today's date in the format YYYY-MM-DD
+                const today = new Date().toISOString().split('T')[0];
+                
+                // Get the delivery date input element
+                const deliveryDateInput = document.getElementById('deliveryDate');
+        
+                // Set the minimum date for the deliveryDate input to today
+                deliveryDateInput.setAttribute('min', today);
+        
+                // Function to handle form submission
+                const handleSubmit = (event) => {
+                    event.preventDefault();
+                    
+                    // Get the selected delivery date
+                    const selectedDate = deliveryDateInput.value;
+        
+                    // Compare the selected date with today's date
+                    if (selectedDate < today) {
+                        alert('Please select a date that is not in the past.');
+                    } else {
+                        // Process the form submission or perform other actions
+                        alert('CONRATULATIONS! Delivery date selected: ' + selectedDate);
+                    }
+                };
+        
+                // Add a submit event listener to the form
+                document.querySelector('form').addEventListener('submit', handleSubmit);
+            </script>
+            <!--END ANWER HERE-->
+
+            <li>An input field to use to select one item from the Southeast Asian nations, with Philippines as default selection: (follow the order of presentation)</li>
+                    <ul>
+                        <li>Burma</li>
+                        <li>Brunei</li>
+                        <li>Cambodia</li>
+                        <li>Indonesia</li>
+                        <li>Laos</li>
+                        <li>Malaysia</li>
+                        <li>Philippines</li>
+                        <li>Singapore</li>
+                        <li>Thailand</li>
+                        <li>Timor-Leste</li>
+                        <li>Vietname</li>
+                    </ul>
+            <!--ANWER HERE--> 
+            <form>
+                <label for="nationSelect">Select a nation:</label>
+                <select id="nationSelect" name="nationSelect">
+                    <option value="Burma">Burma</option>
+                    <option value="Brunei">Brunei</option>
+                    <option value="Cambodia">Cambodia</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Laos">Laos</option>
+                    <option value="Malaysia">Malaysia</option>
+                    <option value="Philippines" selected>Philippines</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="Timor-Leste">Timor-Leste</option>
+                    <option value="Vietnam">Vietnam</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+            <!--END ANWER HERE-->
+
+            <li>An input field for ingredients that can select one or more from the list:</li>
+                <ul>
+                    <li>Fresh Celery</li>
+                    <li>Skim Milk</li>
+                    <li>Turkey Celery</li>
+                    <li>Butter</li>
+                    <li>Carrots</li>
+                    <li>Onion</li>
+                </ul>
+            <!--ANWER HERE--> 
+            <h1>Select Ingredients</h1>
+            <form>
+                <label>Select Ingredients:</label><br>
+                <input type="checkbox" id="freshCelery" name="ingredients" value="Fresh Celery">
+                <label for="freshCelery">Fresh Celery</label><br>
+                
+                <input type="checkbox" id="skimMilk" name="ingredients" value="Skim Milk">
+                <label for="skimMilk">Skim Milk</label><br>
+                
+                <input type="checkbox" id="turkeyCelery" name="ingredients" value="Turkey Celery">
+                <label for="turkeyCelery">Turkey Celery</label><br>
+                
+                <input type="checkbox" id="butter" name="ingredients" value="Butter">
+                <label for="butter">Butter</label><br>
+                
+                <input type="checkbox" id="carrots" name="ingredients" value="Carrots">
+                <label for="carrots">Carrots</label><br>
+                
+                <input type="checkbox" id="onions" name="ingredients" value="Onions">
+                <label for="onions">Onions</label><br>
+                
+                <button type="submit">Submit</button>
+            </form>
+            <!--END ANWER HERE--> 
+
+            <li>An input field to select whether a user is an administrator or not? (Boolean)</li>    
+            <!--ANWER HERE--> 
+            <form>
+                <label for="isAdmin">Are you an administrator?</label>
+                <select id="isAdmin" name="isAdmin">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+            <!--END ANWER HERE-->  
+
+            <li>An input field to upload one or more audio related files(like mp3, wav, ogg, m4a)</li>
+            <!--ANWER HERE--> 
+            <form enctype="multipart/form-data" method="post" action="upload.php">
+                <label for="audioFiles">Select Audio File(s):</label>
+                <input type="file" id="audioFiles" name="audioFiles[]" accept=".mp3, .wav, .ogg, .m4a" multiple>
+                <button type="submit">Upload</button>
+            </form>
+            <!--END ANWER HERE-->    
+        </ol>
+    </section>
+
+    <section id="table-related">
+
+        <h3>Create the table as depicted in the image below. Use correct semantic elements. 15pts</h3>
+
+        <p>Use the base code below for basic styling. You may use css if you know it</p>
+        <!--ANWER HERE--> 
+        <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Define colors for the days of the week */
+        th.Project_MGMT {
+            background-color: #a4ff00; 
+        }
+
+        th.Network_MGMT {
+            background-color: #0086ff; 
+        }
+
+        th.RDBMS {
+            background-color: #ccffac; 
+        }
+
+        th.Event_Driven {
+            background-color: #ffff99; 
+        }
+
+        th.WebDev {
+            background-color: #ffe6c8; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Schedule</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>7:00-7:30 AM</th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th class="Project_MGMT"></th>
+                <th>Class </th>
+                <th class="RDBMS"> </th>
+            </tr>
+            <tr>
+                <th>7:30-8:00 AM</th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th class="Project_MGMT"> </th>
+                <th>Class </th>
+                <th class="RDBMS"></th>
+            </tr>
+            <tr>
+                <th>8:00-8:30 AM</th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th class="Project_MGMT"> </th>
+                <th>Class </th>
+                <th class="RDBMS"></th>
+            </tr>
+            <tr>
+                <th>8:30-9:00 AM</th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th class="Project_MGMT"></th>
+                <th>Class </th>
+                <th class="RDBMS">RDBMS</th>
+            </tr>
+            <tr>
+                <th>9:00-9:30 AM</th>
+                <th>Class </th>
+                <th>Class </th>
+                <th class="Network_MGMT"></th>
+                <th class="Project_MGMT">PROJECT MGMT </th>
+                <th>Class </th>
+                <th class="RDBMS"></th>
+            </tr>
+            <tr>
+                <th>9:30-10:00 AM</th>
+                <th>Class </th>
+                <th>Class</th>
+                <th class="Network_MGMT"> </th>
+                <th class="Project_MGMT"> </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>10:00-10:30 AM</th>
+                <th>Class </th>
+                <th class="Network_MGMT"> </th>
+                <th class="Network_MGMT"> </th>
+                <th class="Project_MGMT" > </th>
+                <th>Class </th>
+                <th class="WebDev"></th>
+            </tr>
+            <tr>
+                <th>10:30-11:00 AM</th>
+                <th>Class </th>
+                <th class="Network_MGMT">NETWORK MGMT </th>
+                <th class="Network_MGMT">NETWORK MGMT</th>
+                <th class="Project_MGMT"> </th>
+                <th>Class </th>
+                <th class="WebDev"></th>
+            </tr>
+            <tr>
+                <th>11:00-11:30 AM</th>
+                <th>Class </th>
+                <th class="Network_MGMT"> </th>
+                <th class="Network_MGMT"> </th>
+                <th class="Project_MGMT"> </th>
+                <th>Class </th>
+                <th class="WebDev">WEBDEV</th>
+            </tr>
+            <tr>
+                <th>11:30-12:00 PM</th>
+                <th>Class </th>
+                <th class="Network_MGMT"> </th>
+                <th class="Network_MGMT"> </th>
+                <th class="Project_MGMT" > </th>
+                <th>Class </th>
+                <th class="WebDev" ></th>
+            </tr>
+            <tr>
+                <th>12:00-12:30 PM</th>
+                <th class="RDBMS"> </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th class="WebDev"></th>
+            </tr>
+            <tr>
+                <th>12:30-13:00 PM</th>
+                <th class="RDBMS">RDBMS</th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>13:00-13:30 PM</th>
+                <th class="RDBMS"> </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>13:30-14:00 PM</th>
+                <th class="RDBMS"> </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>14:00-14:30 PM</th>
+                <th class="Event_Driven"> </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>14:30-15:00 PM</th>
+                <th class="Event_Driven">EVENT DRIVEN </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>15:00-15:30 PM</th>
+                <th class="Event_Driven"> </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>15:30-16:00 PM</th>
+                <th class="Event_Driven"> </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>16:00-16:30 PM</th>
+                <th class="WebDev"> </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>16:30-17:00 PM</th>
+                <th class="WebDev">WEBDEV </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>17:00-17:30 PM</th>
+                <th class="WebDev"> </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>17:30-18:00 PM</th>
+                <th class="WebDev"> </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>18:00-18:30 PM</th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <tr>
+                <th>18:00-18:30 PM</th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class </th>
+                <th>Class</th>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+        <!--END ANWER HERE-->
+    </section>
+
+</body>
+</html>
